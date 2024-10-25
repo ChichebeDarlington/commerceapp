@@ -15,7 +15,7 @@ dotenv.config();
 
 const PORT = process.env.PORT || 7000;
 
-const _dirname = path.resolve;
+const __dirname = path.resolve();
 
 // modules
 const app = express();
