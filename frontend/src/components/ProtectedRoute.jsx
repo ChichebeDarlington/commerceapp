@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
   const { user, checkAuth } = useUserStore();
 
   if (!user) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" replace />;
   }
   return children;
 };

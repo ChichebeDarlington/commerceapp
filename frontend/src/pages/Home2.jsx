@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import CategoryItem from "../components/CategoryItem";
 import { useProductStore } from "../stores/useProductStore";
 import FeaturedProducts from "../components/FeaturedProducts";
-import ProtectedRoute from "../components/ProtectedRoute";
+import { useUserStore } from "../stores/useUserStore";
+import { useCartStore } from "../stores/useCartStore";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const categories = [
   { href: "/jeans", name: "Jeans", imageUrl: "/jeans.jpg" },
@@ -16,10 +18,24 @@ const categories = [
 
 const HomePage = () => {
   const { fetchFeaturedProducts, products, isLoading } = useProductStore();
+  const { user, checkAuth, checkingAuth } = useUserStore();
+  const { getCartItems } = useCartStore();
 
   useEffect(() => {
     fetchFeaturedProducts();
   }, [fetchFeaturedProducts]);
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
+  useEffect(() => {
+    if (!user) return;
+
+    getCartItems();
+  }, [getCartItems, user]);
+
+  if (checkingAuth) return <LoadingSpinner />;
 
   return (
     // <ProtectedRoute>

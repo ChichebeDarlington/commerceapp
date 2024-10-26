@@ -1,18 +1,21 @@
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+// pages route
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import HomePage from "./pages/Home2";
 import Cart from "./pages/Cart";
 import Admin from "./pages/Admin";
-import { Toaster } from "react-hot-toast";
-
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-import { useUserStore } from "./stores/useUserStore";
 import CategoryPage from "./pages/Category";
 import CartPage from "./pages/Cart";
 import PurchaseSuccessPage from "./pages/PurchaseSuccess";
 import PurchaseCancelPage from "./pages/PurchaseCancel";
+import { useUserStore } from "./stores/useUserStore";
 
 const router = createBrowserRouter([
   {

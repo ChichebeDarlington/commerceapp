@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import axios from "../lib/axios";
 import { Users, Package, ShoppingCart, DollarSign } from "lucide-react";
+import LoadingSpinner from "../components/LoadingSpinner";
+
 import {
   LineChart,
   Line,
@@ -40,7 +42,7 @@ const AnalyticsTab = () => {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   return (
