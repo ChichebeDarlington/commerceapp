@@ -1,11 +1,10 @@
 import { Coupon } from "../models/couponModel.js";
 
 export const getCoupon = async (req, res) => {
-  const { isActive } = req.body;
   try {
     const coupon = await Coupon.findOne({
       userId: req.user._id,
-      isActive: isActive,
+      isActive: true,
     });
     return res.status(200).json(coupon || null);
   } catch (error) {
